@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Login</title>
+    <style>
+        body{
+            background: linear-gradient(to right, #b92b27, #1565c0)
+        }
+        .container{
+            border-radius: 15px;
+            background-color: #191919;
+            text-align: center;
+            width: 25%;
+            height: 340px;
+            margin: 15% auto;
+            color: white;
+            padding: 20px 20px;
+        }
+        
+        .username{
+            border: none;
+            margin-top: 10%;
+            
+        }
+        .password{
+            margin: 5% 0;
+            
+        }
+        .user{
+            color: white;
+            padding: 5px 10px;
+            background-color: #191919;
+            border: solid 2px blue;
+            border-radius: 15px;
+        }
+        .pass{
+            color: white;
+            padding: 5px 10px;
+            background-color: #191919;
+            border: none;
+            border: solid 2px green;
+            
+            border-radius: 15px;
+        }
+        .btn{
+            color: white;
+            background-color: #191919;
+            border: solid 2px green;
+            border-radius: 15px;
+            margin-bottom: 10px;
+        }
+        .btn:hover{
+            background-color: green;
+        }
+        a:hover{
+            text-decoration: none;
+        }
+    </style>
+  </head>
+  <body>
+  <div class="container">
+
+      <h1 >LOGIN</h1>
+      <p style="font-size: 14px;">Please Enter your username and password</p>
+
+<form method="POST">{% csrf_token %}
+    <div class="username">
+
+        <input type="text" class="user"name="username" placeholder="username" autocomplete="off">
+    </div>
+    <div class="password">
+
+        <input type="password"class="pass" name="password" placeholder="password">
+    </div>
+    <div>
+
+        <input type="submit" class="btn  ">
+    </div>
+    
+    <div>
+       Don't have Account ? <a href="{% url 'signup'%}">SignUp Here!</a>
+    </div>
+    <div>
+       Forgot Password ? <a href="{% url 'reset_password'%}">Reset Password</a>
+    </div>
+</form>
+  </div>
+
+
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+
+
+

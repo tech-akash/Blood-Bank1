@@ -1,0 +1,166 @@
+ <!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <style>
+        body{
+            background: linear-gradient(to right, #b92b27, #1565c0)
+        }
+        .container{
+            border-radius: 15px;
+            background-color: #191919;
+            text-align: center;
+            width: 35%;
+            height: 450px;
+            margin: 8% auto;
+            color: white;
+            padding: 20px 20px;
+        }
+        .main{
+               text-align: left;
+               
+        }
+        .errorlist{
+            list-style: none;
+        }
+        li{
+            margin: auto;
+            padding: 3px;
+        }
+        #id_username{
+            color: white;
+            padding: 0 5px;
+            background-color: #191919;
+            border: solid 2px blue;
+            border-radius: 15px;
+
+        }
+        #id_email{
+            color: white;
+            padding: 0 5px;
+            background-color: #191919;
+            border: solid 2px orange;
+            border-radius: 15px;
+        }
+        #id_password1{
+            color: white;
+            padding: 0 5px;
+            background-color: #191919;
+            border: solid 2px green;
+            border-radius: 15px;
+
+        }
+        #id_password2{
+            color: white;
+            padding: 0 5px;
+            background-color: #191919;
+            border: solid 2px tomato;
+            border-radius: 15px;
+        }
+        .btn{
+            color: white;
+            background-color: #191919;
+            border: solid 2px green;
+            border-radius: 15px;
+            margin-bottom: 10px;
+        }
+        .btn:hover{
+            background-color: green;
+        }
+        p{
+            margin: 3px 0;
+        }
+        
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <h1>SignUp</h1>
+        <form method="POST">{% csrf_token %}
+            <table class="main table table-borderless">
+                <tr>
+                    <td>
+                        Username : 
+
+                    </td>
+                    <td>
+
+                        {{form.username}}
+                    </td>
+                    
+                </tr>
+                <tr>
+                <td>
+                Email :
+                </td>
+                <td>
+                {{form.email}}
+                </td>
+                </tr>
+                <tr>
+                    <td>
+
+                        Password : 
+                        
+                    </td>
+                    <td>
+
+                        {{form.password1}}
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                        Confirm Password : 
+                        
+                    </td>
+                    <td>
+                        
+                        {{form.password2}}
+                    </td>
+                    
+                </tr>
+                
+            </table>
+            <input type="submit" class="btn">
+            <p>Already a User! <a href="{%url 'loginpage'%}">Login Here</a></p>
+            {% if form.username.errors %}
+            {{form.username.errors}}
+            {%else%}
+            <p>
+                Enter a valid Password!
+                Must be of 8 character not all digits and not common
+
+            </p>
+            {%endif%}
+            
+
+
+            
+            
+        </form>
+
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+ 
+
+{% comment %} 
+<form method="POST">{% csrf_token %}
+{{form}}
+<input type="submit">
+</form> {% endcomment %}
+

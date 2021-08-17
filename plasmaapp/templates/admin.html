@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+     <style>
+         body{
+             background-color: #BAC5CA;
+         }
+         .container{
+             margin: 3% auto;
+             text-align: center;
+             
+             background-color: #FAF7F5;
+         }
+         .card{
+             text-align: center;
+         }
+         a{
+             color: white;
+         }
+         a:hover{
+             text-decoration: none;
+             color: white;
+         }
+         .wel{
+             margin: 0;
+             padding: 5% 0;
+             font-size: 3rem;
+             color: rgb(8, 189, 114);
+         }
+         .card{
+             margin: 20px 0;
+             margin-left: 70px;
+             text-align: center;
+             padding: 0;
+             /* padding: 0; */
+            }
+            .table1{
+                text-align: left;
+                margin-left:auto;margin-right:auto;
+            }
+            .card-body{
+             padding-left: 0;
+             /* padding-right: 0; */
+            width: 300px;
+             text-align: center;
+            
+            height: 250px;
+            /* margin:0 auto; */
+         }
+         .row{
+             text-align: center;
+         }
+         .pending{
+             color: rgb(124, 71, 10);
+             background-color: rgb(230, 164, 175);
+         }
+         hr{
+             margin: 2px;
+         }
+         .accepted{
+           background-color: rgb(245, 217, 195);
+           color: rgb(97, 73, 6);
+         }
+         .gotit{
+           background-color: rgb(135, 216, 166);
+           color: rgb(5, 97, 43);
+         }
+     </style>
+    <title>Hello, world!</title>
+  </head>
+  <body>
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container shadow-lg p-3 mb-5 bg-white rounded">
+    <h1 class="wel">Welcome To Admin Dashboard</h1>
+    
+</div>
+<div class="container shadow-lg p-3 mb-5 bg-white rounded">
+    <h1 style="color: rgb(124, 71, 10);">Status Pending</h1>
+       <div class="row">
+
+           {% for acceptor in AllCustomer %}
+           {% if acceptor.status == "Pending" and not acceptor.need == "None" %}
+           <div class="card pending deck col-md-3 shadow-lg  rounded" >
+               <div class="card-body">
+                   <h5 class="card-title">{{acceptor.status}}</h5>
+                   <hr width="100%">
+                   <table class="table1">
+                       <tr>
+                           <td>
+
+                               Name :
+                           </td>
+                           <td>{{acceptor.name}}</td>
+                       </tr>
+                      
+                       <tr>
+                        <td>
+
+                            Blood Group :
+                        </td>
+                        <td>{{acceptor.bloodgroup}}</td>
+                       </tr>
+                       
+                       <tr>
+                        <td>
+
+                            Age :
+                        </td>
+                        <td>{{acceptor.age}}</td>
+                       </tr>
+                       <tr>
+                           <td>Gender :</td>
+                           <td>{{acceptor.gender}}</td>
+                       </tr>
+                       <tr>
+                           <td>Phone Number : </td>
+                           <td> {{acceptor.phoneno}}</td>
+                       </tr>
+                       {% comment %} <tr>
+                        <td>email : </td>
+                        <td> {{acceptor.email}}</td>
+                    </tr> {% endcomment %}
+                   </table>
+                 <!-- <h6 class="card-subtitle mb-2 ">Day : {{acceptor.dayofaccept}}</h6>
+                 <h6 class="card-subtitle mb-2 ">Blood Group : {{acceptor.bloodgroup}}</h6>
+                 <h6 class="card-subtitle mb-2 ">Age : {{acceptor.age}}</h6>
+                 <h6 class="card-subtitle mb-2 ">Gender : {{acceptor.gender}}</h6> -->
+                 <a href="editaccept/{{acceptor.username}}"> <button type="submit"class="btn btn-info btn-block" >Edit</button></a>
+
+                
+               </div>
+             </div>
+             {%endif%}
+           
+               {% endfor %}
+       </div>
+    
+</div>
+<div class="container shadow-lg p-3 mb-5 bg-white rounded">
+    <h1 style="color: rgb(97, 73, 6);">Status Accepted</h1>
+    <div class="row">
+
+      {% for acceptor in AllCustomer %}
+      {% if acceptor.status == "Accepted"  %}
+      <div class="card accepted deck col-md-3 shadow-lg  rounded" >
+          <div class="card-body">
+              <h5 class="card-title">{{acceptor.status}}</h5>
+              <hr width="100%">
+              <table class="table1">
+                  <tr>
+                      <td>
+
+                          Name :
+                      </td>
+                      <td>{{acceptor.name}}</td>
+                  </tr>
+                 
+                  <tr>
+                   <td>
+
+                       Blood Group :
+                   </td>
+                   <td>{{acceptor.bloodgroup}}</td>
+                  </tr>
+                  
+                  <tr>
+                   <td>
+
+                       Age :
+                   </td>
+                   <td>{{acceptor.age}}</td>
+                  </tr>
+                  <tr>
+                      <td>Gender :</td>
+                      <td>{{acceptor.gender}}</td>
+                  </tr>
+                  <tr>
+                      <td>Phone Number : </td>
+                      <td> {{acceptor.phoneno}}</td>
+                  </tr>
+              </table>
+            <!-- <h6 class="card-subtitle mb-2 ">Day : {{acceptor.dayofaccept}}</h6>
+            <h6 class="card-subtitle mb-2 ">Blood Group : {{acceptor.bloodgroup}}</h6>
+            <h6 class="card-subtitle mb-2 ">Age : {{acceptor.age}}</h6>
+            <h6 class="card-subtitle mb-2 ">Gender : {{acceptor.gender}}</h6> -->
+            <a href="editaccept/{{acceptor.username}}"> <button type="submit"class="btn btn-info btn-block" >Edit</button></a>
+
+           
+          </div>
+        </div>
+        {%endif%}
+      
+          {% endfor %}
+  </div>
+</div>
+<div class="container shadow-lg p-3 mb-5 bg-white rounded">
+    <h1 style="color: rgb(5, 97, 43);">Status GotIt</h1>
+    <div class="row">
+
+      {% for acceptor in AllCustomer %}
+      {% if acceptor.status == "GotIt"  %}
+      <div class="card gotit deck col-md-3 shadow-lg  rounded" >
+          <div class="card-body">
+              <h5 class="card-title">{{acceptor.status}}</h5>
+              <hr width="100%">
+              <table class="table1">
+                  <tr>
+                      <td>
+
+                          Name :
+                      </td>
+                      <td>{{acceptor.name}}</td>
+                  </tr>
+                 
+                  <tr>
+                   <td>
+
+                       Blood Group :
+                   </td>
+                   <td>{{acceptor.bloodgroup}}</td>
+                  </tr>
+                  
+                  <tr>
+                   <td>
+
+                       Age :
+                   </td>
+                   <td>{{acceptor.age}}</td>
+                  </tr>
+                  <tr>
+                      <td>Gender :</td>
+                      <td>{{acceptor.gender}}</td>
+                  </tr>
+                  <tr>
+                      <td>Phone Number : </td>
+                      <td> {{acceptor.phoneno}}</td>
+                  </tr>
+              </table>
+            <!-- <h6 class="card-subtitle mb-2 ">Day : {{acceptor.dayofaccept}}</h6>
+            <h6 class="card-subtitle mb-2 ">Blood Group : {{acceptor.bloodgroup}}</h6>
+            <h6 class="card-subtitle mb-2 ">Age : {{acceptor.age}}</h6>
+            <h6 class="card-subtitle mb-2 ">Gender : {{acceptor.gender}}</h6> -->
+            <a href="editaccept/{{acceptor.username}}"> <button type="submit"class="btn btn-info btn-block" >Edit</button></a>
+
+           
+          </div>
+        </div>
+        {%endif%}
+      
+          {% endfor %}
+  </div>
+</div>
+  
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+    
+</div>
+
+
+
+
+

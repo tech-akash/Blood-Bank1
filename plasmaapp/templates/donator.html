@@ -1,0 +1,11 @@
+<h1>Donator</h1>
+
+<form action="" method="POST">{%csrf_token%}
+    <div class="name"><span class="lable"> Name : </span>{{form.name}}</div>
+    <div class="address"><span class="lable"> Address : </span>{{form.address}}</div>
+    <div class="phoneno"><span class="lable"> Phone No. : </span>{{form.phoneno}}</div>
+    <div class="age"><span class="lable"> Age : </span>{{form.age}}</div>
+    <div class="gender"><span class="lable"> Gender : </span>{{form.gender}}</div>
+    <div class="bloopgroup"><span class="lable"> Blood Group : </span>{{form.bloodgroup}}</div>
+    <input type="submit">
+</form>
